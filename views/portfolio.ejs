@@ -1,0 +1,50 @@
+<%- include("partials/header.ejs") %>
+			
+			<section class="boxed no-padding bg-img " style="background-image: url(images/bg/bg-portfolio.jpg);">
+				<div class="sub-header depen-on-img">
+					<img src="images/bg/bg-portfolio.jpg" class="img-responsive" alt="Image">
+					<div class="sub-header-inner center-center">
+						<h2>Project</h2>
+						<ol class="breadcrumb">
+							<li>
+								<a href="#">HOME</a>
+							</li>
+							<li class="active">Project</li>
+						</ol>
+					</div>
+				</div>
+			</section>
+			<!-- /subheader -->
+
+			<section class="boxed">
+				<div class="projectFilter text-center">
+					<a href="#" data-filter=".residential" class="current">Residential</a>
+					<a href="#" data-filter=".commercial">Commercial</a>
+					<a href="#" data-filter=".independent">Independent Bungalows / Villa</a>
+					<a href="#" data-filter=".school">School</a>
+					<a href="#" data-filter=".interior">Interior Design</a>
+				</div> <!-- End Project Filter -->
+
+				<div class="row">
+					<div class="list-portfolio-warp">
+					<div class="grid-sizer col-sm-6 col-md-3"></div>
+
+					<% projects.forEach(project => { %>
+						<div class="col-md-3 col-sm-6 col-xs-12 element-item <%= project.type_class %>">
+						<div class="portfolio-home2-item">
+							<img src="uploads/<%= project.thumbnail %>" class="img-responsive" alt="<%= project.project_name %>">
+							<div class="overlay">
+							<h4><a href="/single_project/<%= project.id %>"><%= project.project_name %></a></h4>
+							<!-- <a href="portfolio.html" class="cate-project"><%= project.type_name %></a> -->
+							</div>
+						</div>
+						</div>
+					<% }) %>
+
+					</div>
+				</div>
+			</section>
+
+			<!-- /portfolio warp -->
+
+<%- include("partials/footer.ejs") %>

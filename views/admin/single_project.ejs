@@ -1,0 +1,100 @@
+<%- include("../partials/admin_header.ejs") %>
+			
+<section class="boxed no-padding bg-img" style="background-image: url('/images/bg/ambujabg.webp')">
+	<div class="sub-header full">
+		<div class="meta-single-post meta-single-post-2">
+		<div class="container">
+			<div class="row">
+			<div class="col-md-5">
+				<div class="project-info">
+				<h2><%= project.project_name %></h2>
+				<ol class="breadcrumb">
+					<li><a href="/">HOME</a></li>
+					<li class="active">SINGLE PROJECT</li>
+				</ol>
+				</div>
+			</div>
+			<div class="col-md-2 col-sm-4">
+				<p>Date</p>
+				<span><%= new Date(project.created_at).toLocaleDateString("en-US", { month: "long", day: "numeric", year: "numeric" }) %></span>
+			</div>
+			<div class="col-md-2 col-sm-4">
+				<p>Category</p>
+				<span><%= project.type_name %></span>
+			</div>
+			<div class="col-md-3 col-sm-4">
+				<p>Tags</p>
+				<% if(project.tags) { %>
+				<% project.tags.split(",").forEach(tag => { %>
+					<a href="#"><%= tag.trim() %></a><% if(tag != project.tags.split(",").slice(-1)[0]) { %>, <% } %>
+				<% }) %>
+				<% } %>
+			</div>
+			</div>
+		</div>
+		</div>
+	</div>
+</section>
+
+<section class="pdb-0">
+  <div class="container">
+    <div class="row">
+      <article class="post d-block d-lg-flex align-items-center">
+        <div class="col-md-5">
+          <img src="/uploads/<%= project.thumbnail %>" class="img-responsive" alt="<%= project.project_name %>">
+        </div>
+        <div class="col-md-7">
+          <h4 class="dark-color">Project Description</h4>
+          <div class="clearfix mgt-30"></div>
+          <p><%= project.description %></p>
+		  <% if (!project.gallery_images || project.gallery_images.length === 0) { %>
+  <!-- Show Add Details button only if no gallery images -->
+  <a href="/admin/single_project/<%= project.id %>/add_details" class="btn btn-primary">Add Details</a>
+<% } else { %>
+  <!-- Show Update Gallery button if images exist -->
+  <a href="/admin/single_project/<%= project.id %>/update_details" class="btn btn-warning">Update Gallery</a>
+<% } %>
+
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+        <h3>GALLERY</h3>
+      </div>
+    </div>
+
+    <div class="tz-gallery">
+      <div class="row gy-5">
+       <% if (project.gallery_images && project.gallery_images.length) { %>
+  <div class="row gy-5">
+    <% project.gallery_images.forEach(image => { %>
+      <div class="col-md-3 col-sm-3">
+        <a class="lightbox" href="/uploads/<%= image %>">
+          <img
+            src="/uploads/<%= image %>"
+            class="img-responsive"
+            alt="<%= project.project_name %>"
+          >
+        </a>
+      </div>
+    <% }) %>
+  </div>
+<% } else { %>
+  <p class="text-muted">No gallery images uploaded</p>
+<% } %>
+
+      </div>
+    </div>
+  </div>
+</section>
+
+		
+
+
+			<%- include("../partials/footer.ejs") %>

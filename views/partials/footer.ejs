@@ -1,0 +1,120 @@
+
+</div>
+<footer class="footer-home-1">
+  <div class="footer-inner">
+    <div class="row">
+      <!-- Logo & Links -->
+      <div class="col-md-6">
+        <a href="/" class="logo">
+          <img src="/images/logo-on-dark.png" width="175" class="img-responsive" alt="Logo">
+        </a>
+        <ul class="footer-link-2">
+          <li><a href="career.html">Career</a></li>
+          <li><a href="#">Privacy Policy</a></li>
+          <li><a href="#">Terms &amp; Conditions</a></li>
+          <li><a href="#">FAQ</a></li>
+        </ul>
+      </div>
+
+      <!-- Social Icons -->
+      <div class="col-md-3">
+        <ul class="widget-social-list">
+          <li><a href="#"><i class="fa fa-facebook" aria-hidden="true"></i><span class="sr-only">Facebook</span></a></li>
+          <li><a href="#"><i class="fa fa-twitter" aria-hidden="true"></i><span class="sr-only">Twitter</span></a></li>
+          <li><a href="#"><i class="fa fa-instagram" aria-hidden="true"></i><span class="sr-only">Instagram</span></a></li>
+          <li><a href="#"><i class="fa fa-behance" aria-hidden="true"></i><span class="sr-only">Behance</span></a></li>
+        </ul>
+      </div>
+
+      <!-- Copyright -->
+      <div class="col-md-3">
+        <div class="copyright">
+          &copy; 2025 All Rights Reserved. <br> Designed by TripolyStudio
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<!-- Back to top button -->
+<a id="to-the-top" class="fixbtt bg-hover-theme"><i class="fa fa-chevron-up"></i></a>
+
+<!-- Scripts -->
+<script src="/js/vendor/jquery.min.js"></script>
+<script src="/js/vendor/bootstrap.js"></script>
+
+<!-- Plugins -->
+<script src="/js/plugins/jquery.sticky-kit.min.js"></script>
+<script src="/js/plugins/jquery.waypoints.min.js"></script>
+<script src="/js/plugins/jquery.mmenu.all.min.js"></script>
+<script src="/js/plugins/mobilemenu.js"></script>
+
+<!-- Revolution Slider -->
+<script src="/revolution/js/jquery.themepunch.tools.min.js"></script>
+<script src="/revolution/js/jquery.themepunch.revolution.min.js"></script>
+<script src="/revolution/js/extensions/revolution.extension.actions.min.js"></script>
+<script src="/revolution/js/extensions/revolution.extension.carousel.min.js"></script>
+<script src="/revolution/js/extensions/revolution.extension.kenburn.min.js"></script>
+<script src="/revolution/js/extensions/revolution.extension.layeranimation.min.js"></script>
+<script src="/revolution/js/extensions/revolution.extension.migration.min.js"></script>
+<script src="/revolution/js/extensions/revolution.extension.navigation.min.js"></script>
+<script src="/revolution/js/extensions/revolution.extension.parallax.min.js"></script>
+<script src="/revolution/js/extensions/revolution.extension.slideanims.min.js"></script>
+<script src="/revolution/js/extensions/revolution.extension.video.min.js"></script>
+<script src="/js/plugins/slider-home-1.js"></script>
+
+<!-- Owl Carousel -->
+<script src="/js/plugins/owl.carousel.js"></script>
+<script src="/js/plugins/owl.js"></script>
+
+<!-- Preloader -->
+<script src="/js/plugins/royal_preloader.js"></script>
+
+<!-- Counter Up -->
+<script src="/js/plugins/jquery.counterup.min.js"></script>
+<script src="/js/plugins/counterup.js"></script>
+
+<!-- Isotope & ImagesLoaded -->
+<script src="/js/plugins/isotope.pkgd.min.js"></script>
+<script src="/js/plugins/imagesloaded.pkgd.min.js"></script>
+
+<!-- Template Global JS -->
+<script src="/js/plugins/template.js"></script>
+
+<!-- Custom Isotope Initialization -->
+<script>
+  $(window).on('load', function() {
+    var $grid = $('.list-portfolio-warp').isotope({
+      itemSelector: '.element-item',
+      layoutMode: 'fitRows',
+	    filter: '.residential'  // Show all items initially
+    });
+
+    // Filter click
+    $('.projectFilter a').click(function() {
+      $('.projectFilter a').removeClass('current');
+      $(this).addClass('current');
+
+      var filterValue = $(this).attr('data-filter');
+      $grid.isotope({ filter: filterValue });
+      return false;
+    });
+
+    // Relayout after all images loaded
+    $grid.imagesLoaded().progress(function() {
+      $grid.isotope('layout');
+    });
+
+    // Back to top button
+    $('#to-the-top').click(function() {
+      $('html, body').animate({ scrollTop: 0 }, 'slow');
+      return false;
+    });
+  });
+</script>
+
+
+
+	</body>
+</html>
+

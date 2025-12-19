@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>SANMOUR ARCHITECTS & CONSULTANTS</title>
+
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="/css/bootstrap.css">
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700&subset=devanagari,latin-ext" rel="stylesheet">
+
+  <!-- Icons -->
+  <link rel="stylesheet" href="/fonts/linearicon/style.css">
+  <link rel="stylesheet" href="/fonts/font-awesome/css/font-awesome.min.css">
+
+  <!-- Mobile Menu -->
+  <link rel="stylesheet" href="/css/jquery.mmenu.all.css">
+
+  <!-- Owl Carousel -->
+  <link rel="stylesheet" href="/css/owl.carousel.css">
+
+  <!-- Revolution Slider -->
+  <link rel="stylesheet" href="/revolution/css/settings.css">
+  <link rel="stylesheet" href="/revolution/css/layers.css">
+  <link rel="stylesheet" href="/revolution/css/navigation.css">
+
+  <!-- Main Styles -->
+  <link rel="stylesheet" href="/style.css">
+  <link rel="stylesheet" href="/css/dark.css">
+
+  <!-- Favicon -->
+  <link rel="shortcut icon" href="/images/favicon.png">
+</head>
+
+<body>
+<div id="page">
+
+  <!-- Mobile Menu -->
+  <nav id="menu">
+    <ul>
+      <li class="<%= currentPath === '/admin' ? 'active' : '' %>">
+        <a href="/admin">HOME</a>
+      </li>
+      <li class="<%= currentPath === '/admin/portfolio' ? 'active' : '' %>">
+        <a href="/admin/portfolio">PORTFOLIO</a>
+      </li>
+    </ul>
+  </nav>
+
+  <!-- Header -->
+  <header id="stick" class="header-home">
+    <h1 class="logo">
+      <a href="/admin">
+        <img src="/images/Sanmour_Logo.png" width="225" class="img-responsive" alt="Logo">
+      </a>
+    </h1>
+
+    <nav id="main-nav" class="main-nav">
+      <ul>
+        <li class="<%= currentPath === '/admin' ? 'active' : '' %>">
+          <a href="/admin">HOME</a>
+        </li>
+        <li class="<%= currentPath === '/admin/portfolio' ? 'active' : '' %>">
+          <a href="/admin/portfolio">PORTFOLIO</a>
+        </li>
+      </ul>
+    </nav>
+
+    <a href="#menu" class="btn-menu-mobile">
+      <span class="lnr lnr-menu"></span>
+    </a>
+  </header>

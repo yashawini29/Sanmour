@@ -1,0 +1,39 @@
+
+<%- include("../partials/admin_header.ejs") %>
+			<section class="boxed">
+				<div class="projectFilter text-center">
+					<a href="#" data-filter=".residential" class="current">Residential</a>
+					<a href="#" data-filter=".commercial">Commercial</a>
+					<a href="#" data-filter=".independent">Independent Bungalows / Villa</a>
+					<a href="#" data-filter=".school">School</a>
+					<a href="#" data-filter=".interior">Interior Design</a>
+				</div> <!-- End Project Filter -->
+
+				<div class="row">
+					<div class="list-portfolio-warp">
+					<div class="grid-sizer col-sm-6 col-md-3"></div>
+
+					<% projects.forEach(project => { %>
+						<div class="col-md-3 col-sm-6 col-xs-12 element-item <%= project.type_class %>">
+						<div class="portfolio-home2-item">
+							<img src="../uploads/<%= project.thumbnail %>" class="img-responsive" alt="<%= project.project_name %>">
+							<div class="overlay">
+							
+							<h4><a href="/admin/single_project/<%= project.id %>"><%= project.project_name %></a></h4>
+							<form action="/admin/delete-project/<%= project.id %>" method="POST" onsubmit="return confirm('Are you sure you want to delete this project?');">
+							<button type="submit" class="cate-project bg-transparent">Delete</button>
+							</form>
+
+							</div>
+						</div>
+						</div>
+					<% }) %>
+
+					</div>
+				</div>
+			</section>
+
+			<!-- /portfolio warp -->
+<%- include("../partials/admin_footer.ejs") %>
+
+		
