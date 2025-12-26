@@ -335,6 +335,55 @@ app.post(
   }
 );
 
+// deleting images from gallery
+app.post("/admin/projects/:id/delete-images", async (req, res) => {
+  const { id } = req.params;
+  const { images } = req.body;
+
+  if (!images) {
+    return res.redirect("back");
+  }
+
+  // Always treat as array
+  const imageArray = Array.isArray(images) ? images : [images];
+
+  try {
+    // 1️⃣ Delete files from uploads folder
+    imageArray.forEach((img) => {
+      const filePath = path.join(process.cwd(), "uploads", img);
+
+      if (fs.existsSync(filePath)) {
+        fs.unlinkSync(filePath);
+      }
+    });
+
+    // 2️⃣ Remove images from PostgreSQL array
+    await pool.query(
+      `
+      UPDATE projects
+      SET gallery_images = (
+        SELECT ARRAY(
+          SELECT unnest(gallery_images)
+          EXCEPT
+          SELECT unnest($1::text[])
+        )
+      )
+      WHERE id = $2
+      `,
+      [imageArray, id]
+    );
+
+    console.log("Deleted images:", imageArray);
+
+    res.redirect(`/admin/single_project/${id}`);
+  } catch (err) {
+    console.error("Delete image error:", err);
+    res.status(500).send("Failed to delete images");
+  }
+});
+
+
+
 app.listen(port,() => {
     console.log("server is running on Port " + port);
 })
